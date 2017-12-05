@@ -1,0 +1,50 @@
+
+creating schema
+  series table
+    creates a series table with a title field
+    creates a series table with a author_id field
+    creates a series table with a subgenre_id field
+    creates a series table with an id as a primary key
+  subgenres table
+    creates a subgenres table with a name field
+    creates a subgenres table with an id as a primary key
+  authors table
+    creates a authors table with a name field
+    creates a authors table with an id as a primary key
+  books table
+    creates a books table with a title field
+    creates a books table with a year field
+    creates a books table with a series_id field
+    creates a books table with an id as a primary key
+  characters table
+    creates a characters table with a name field
+    creates a characters table with a species field
+    creates a characters table with a motto field
+    creates a characters table with a series_id field
+    creates a characters table with a author_id field
+    creates a characters table with an id as a primary key
+  character_books join table
+    creates a character_books table with an id as a primary key
+    creates a character_books table with a book_id field
+    creates a character_books table with a character_id field
+
+inserting
+  has 2 series (FAILED - 1)
+
+Failures:
+
+  1) inserting has 2 series
+     Failure/Error: expect(@db.execute("SELECT COUNT(*) FROM series;").flatten[0]).to eq(2)
+       
+       expected: 2
+            got: 0
+       
+       (compared using ==)
+     # ./spec/02_insert_spec.rb:10:in `block (2 levels) in <top (required)>'
+
+Finished in 0.02127 seconds (files took 0.31151 seconds to load)
+22 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/02_insert_spec.rb:9 # inserting has 2 series
