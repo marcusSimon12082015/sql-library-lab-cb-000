@@ -1,0 +1,58 @@
+
+creating schema
+  series table
+    creates a series table with a title field
+    creates a series table with a author_id field
+    creates a series table with a subgenre_id field
+    creates a series table with an id as a primary key
+  subgenres table
+    creates a subgenres table with a name field
+    creates a subgenres table with an id as a primary key
+  authors table
+    creates a authors table with a name field
+    creates a authors table with an id as a primary key
+  books table
+    creates a books table with a title field
+    creates a books table with a year field
+    creates a books table with a series_id field
+    creates a books table with an id as a primary key
+  characters table
+    creates a characters table with a name field
+    creates a characters table with a species field
+    creates a characters table with a motto field
+    creates a characters table with a series_id field
+    creates a characters table with a author_id field
+    creates a characters table with an id as a primary key
+  character_books join table
+    creates a character_books table with an id as a primary key
+    creates a character_books table with a book_id field
+    creates a character_books table with a character_id field
+
+inserting
+  has 2 series
+  has 6 books
+  has 8 characters
+  has 2 subgenres
+  has 2 authors
+  has 16 joins in character_books
+
+updating
+  updates the species of the last character in the characters table to "Martian" (FAILED - 1)
+
+Failures:
+
+  1) updating updates the species of the last character in the characters table to "Martian"
+     Failure/Error: expect(@db.execute('SELECT species FROM characters WHERE id=(SELECT MAX(id) FROM characters);').flatten[0]).to eq("Martian")
+       
+       expected: "Martian"
+            got: "cylon"
+       
+       (compared using ==)
+     # ./spec/03_update_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+Finished in 0.03206 seconds (files took 0.30763 seconds to load)
+28 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/03_update_spec.rb:10 # updating updates the species of the last character in the characters table to "Martian"
