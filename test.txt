@@ -1,0 +1,61 @@
+
+creating schema
+  series table
+    creates a series table with a title field
+    creates a series table with a author_id field
+    creates a series table with a subgenre_id field
+    creates a series table with an id as a primary key
+  subgenres table
+    creates a subgenres table with a name field
+    creates a subgenres table with an id as a primary key
+  authors table
+    creates a authors table with a name field
+    creates a authors table with an id as a primary key
+  books table
+    creates a books table with a title field
+    creates a books table with a year field
+    creates a books table with a series_id field
+    creates a books table with an id as a primary key
+  characters table
+    creates a characters table with a name field
+    creates a characters table with a species field
+    creates a characters table with a motto field
+    creates a characters table with a series_id field
+    creates a characters table with a author_id field
+    creates a characters table with an id as a primary key
+  character_books join table
+    creates a character_books table with an id as a primary key
+    creates a character_books table with a book_id field
+    creates a character_books table with a character_id field
+
+inserting
+  has 2 series
+  has 6 books
+  has 8 characters
+  has 2 subgenres
+  has 2 authors
+  has 16 joins in character_books
+
+updating
+  updates the species of the last character in the characters table to "Martian"
+
+querying
+  selects all of the books titles and years in the first series and orders them chronologically (FAILED - 1)
+
+Failures:
+
+  1) querying selects all of the books titles and years in the first series and orders them chronologically
+     Failure/Error: expect(@db.execute(select_books_titles_and_years_in_first_series_order_by_year)).to eq([["Game of Thrones", 1996], ["A Clash of Kings", 1998], ["A Storm of Swords", 2000]])
+       
+       expected: [["Game of Thrones", 1996], ["A Clash of Kings", 1998], ["A Storm of Swords", 2000]]
+            got: [["Game of Thrones", "1996"], ["A Clash of Kings", "1998"], ["A Storm of Swords", "2000"]]
+       
+       (compared using ==)
+     # ./spec/04_querying_spec.rb:10:in `block (2 levels) in <top (required)>'
+
+Finished in 0.0326 seconds (files took 0.30603 seconds to load)
+29 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/04_querying_spec.rb:9 # querying selects all of the books titles and years in the first series and orders them chronologically
